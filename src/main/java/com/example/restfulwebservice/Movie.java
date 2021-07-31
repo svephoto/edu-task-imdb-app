@@ -7,21 +7,32 @@ import java.util.List;
 @Entity
 //@Table(name = "movies")
 public class Movie {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     private String name;
     private Date year;
     private double rating;
-//    private String actors;
+    //    private String actors;
     private List<String> actors;
     private String genre;
     private byte[] image;
     private String trailer;
-
     public Movie() {
     }
 
 //    @Column(name = "name")
     public String getName() {
         return this.name;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setName(String name) {
