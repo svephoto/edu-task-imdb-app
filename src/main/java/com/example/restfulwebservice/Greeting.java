@@ -1,16 +1,35 @@
 package com.example.restfulwebservice;
 
-public class Greeting {
-    private final long id;
-    private final String content;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-    public Greeting(long id, String content) {
+@Entity
+public class Greeting {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    private String content;
+
+    public Greeting(Integer id, String content) {
         this.id = id;
         this.content = content;
     }
 
-    public long getId() {
+    public Greeting() {
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
         return this.id;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getContent() {
