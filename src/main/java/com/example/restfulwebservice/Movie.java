@@ -15,10 +15,12 @@ public class Movie {
     private Date year;
     private double rating;
     //    private String actors;
+    @ElementCollection
     private List<String> actors;
     private String genre;
     private byte[] image;
     private String trailer;
+
     public Movie() {
     }
 
@@ -55,7 +57,7 @@ public class Movie {
         this.rating = rating;
     }
 
-//    @ManyToOne(cascade = CascadeType.ALL)
+//    @OneToMany(cascade = CascadeType.ALL)
     public List<String> getActors() {
         return this.actors;
     }
