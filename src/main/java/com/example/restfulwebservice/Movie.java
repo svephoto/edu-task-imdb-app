@@ -10,11 +10,9 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String name;
     private Date year;
     private double rating;
-    //    private String actors;
     @ElementCollection
     private List<String> actors;
     private String genre;
@@ -57,7 +55,6 @@ public class Movie {
         this.rating = rating;
     }
 
-//    @OneToMany(cascade = CascadeType.ALL)
     public List<String> getActors() {
         return this.actors;
     }
@@ -65,14 +62,6 @@ public class Movie {
     public void setActors(List<String> act) {
         this.actors = act;
     }
-
-//    public String getActors() {
-//        return this.actors;
-//    }
-//
-//    public void setActors(String actors) {
-//        this.actors = actors;
-//    }
 
     public String getGenre() {
         return this.genre;
