@@ -1,6 +1,7 @@
 package com.example.restfulwebservice;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 //@Table(name = "users")
@@ -13,7 +14,9 @@ public class User {
     private String username;
     private String email;
     private String password;
+    private String passwordConfirm;
     private String displayName;
+    private Set<Role> roles;
 
     public User() {
     }
@@ -66,11 +69,31 @@ public class User {
         this.password = password;
     }
 
+    @Transient
+    public String getPasswordConfirm() {
+        return this.passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
+
     public String getDisplayName() {
         return this.displayName;
     }
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
+    }
+
+    @ManyToMany
+    @JoinTable(name = "user_role", joinColumns =  @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
